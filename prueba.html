@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teknova — Concurso cambio de logo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e1624;
+      --accent1: #00bcd4;
+      --accent2: #673ab7;
+      --text: #eaf2ff;
+      --glass: rgba(255,255,255,0.05);
+    }
+    * { box-sizing: border-box; font-family: "Inter", sans-serif; scroll-behavior: smooth; }
+    body { margin: 0; background: linear-gradient(160deg, #0a1020, #111b32); color: var(--text); overflow-x: hidden; }
+
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 15px 30px; background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 1000;
+    }
+    .logo img { height: 55px; width: auto; }
+    nav { display: flex; gap: 15px; }
+    nav button {
+      background: transparent; border: 1px solid transparent; color: var(--text);
+      font-weight: 600; cursor: pointer; padding: 8px 16px; border-radius: 10px; transition: 0.3s;
+    }
+    nav button:hover, nav button.active {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* HERO */
+    .hero {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      height: 100vh; text-align: center; position: relative; overflow: hidden;
+      background: linear-gradient(180deg, rgba(10,16,32,0.9) 0%, rgba(14,22,40,0.9) 100%), 
+                  url('https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+    }
+    .hero::after {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, rgba(0,188,212,0.3), rgba(103,58,183,0.1));
+      z-index: 0;
+    }
+    .hero-text { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero-text h1 {
+      font-size: 70px; font-weight: 800;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 15px; line-height: 1.1;
+      text-shadow: 0 0 25px rgba(0,188,212,0.2);
+    }
+    .hero-text p {
+      font-size: 20px; color: #d9e4ff; line-height: 1.6; max-width: 700px;
+      margin: 0 auto 25px; opacity: 0.9;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      border: none; color: white; padding: 16px 26px;
+      border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4); transition: 0.3s;
+    }
+    .btn-primary:hover { transform: scale(1.08); }
+
+    .tab { display: none; animation: fadeIn 0.8s ease forwards; }
+    .tab.active { display: block; }
+    @keyframes fadeIn { from {opacity:0;transform:translateY(15px);} to {opacity:1;transform:translateY(0);} }
+
+    form {
+      display: flex; flex-direction: column; gap: 12px; background: var(--glass);
+      padding: 25px; border-radius: 15px; margin-top: 50px;
+    }
+    input, textarea {
+      background: rgba(255,255,255,0.05); border: none; border-radius: 10px;
+      padding: 10px; color: var(--text);
+    }
+    input[type="file"] { padding: 6px; }
+
+    .terms-box {
+      background: rgba(255,255,255,0.05);
+      padding: 10px; border-radius: 10px; height: 150px; overflow-y: auto;
+      border: 1px solid rgba(255,255,255,0.2); font-size: 14px; color: #cfd9ff;
+    }
+    .terms-actions { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+    .small-text { font-size: 12px; opacity: 0.7; margin-top: 10px; text-align: center; }
+
+    /* Nosotros */
+    .section {
+      margin-top: 70px; display: flex; align-items: center; gap: 30px; flex-wrap: wrap;
+      background: var(--glass); padding: 30px; border-radius: 20px;
+    }
+    .section img {
+      width: 500px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .section div { flex: 1; }
+    .apps {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    .app-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px; padding: 20px; text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .app-card:hover { transform: scale(1.05); }
+    .app-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
+
+    footer { text-align: center; padding: 20px; opacity: 0.7; margin-top: 60px; }
+
+    @media(max-width:900px){
+      .hero-text h1 { font-size: 48px; }
+      .hero-text p { font-size: 18px; }
+      nav { display:none; }
+      .section { flex-direction: column; text-align: center; }
+      .section img { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><img src="logo.png" alt="Logo Teknova"></div>
+  <nav>
+    <button class="tab-btn active" data-tab="inicio">Inicio</button>
+    <button class="tab-btn" data-tab="inscripcion">Inscripción</button>
+    <button class="tab-btn" data-tab="nosotros">Nosotros</button>
+  </nav>
+</header>
+
+<main>
+  <div id="inicio" class="tab active">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Concurso Nuevo Logo Teknova</h1>
+        <p>Queremos que seas parte de nuestra nueva identidad. Diseña el logo que representará el futuro tecnológico de Teknova y gana reconocimiento y premios.</p>
+        <button class="btn-primary" id="participaBtn">¡Participa ahora!</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="inscripcion" class="tab">
+    <h2>Formulario de Inscripción</h2>
+    <form id="formInscripcion">
+      <label>Nombre completo:</label>
+      <input type="text" required placeholder="Ejemplo: Ana Torres">
+      <label>Documento de identidad:</label>
+      <input type="text" required placeholder="Cédula o ID">
+      <label>Correo electrónico:</label>
+      <input type="email" required placeholder="correo@ejemplo.com">
+      <label>Teléfono:</label>
+      <input type="text" placeholder="+57 300 0000000">
+      <label>Subir tu logo (formato PNG):</label>
+      <input type="file" accept="image/png" required>
+
+      <h3>Términos y Condiciones</h3>
+      <div class="terms-box">
+        <p><strong></strong> Términos y Condiciones del Concurso el Nuevo Logo de Teknova
+1. Datos generales del concurso
+La empresa Teknova S.A.S., identificada con NIT 34682431, con domicilio en Cll 135 #24-54  actuando como organizadora y promotora del presente concurso, convoca oficialmente al Concurso de Diseño el Nuevo Logo de Teknova, cuyo propósito es seleccionar la propuesta gráfica que representará de manera oficial la nueva identidad visual de la marca. Este concurso busca incentivar la creatividad, la innovación y el talento profesional en el ámbito del diseño, fortaleciendo la conexión entre la empresa y la comunidad creativa nacional.
+El concurso tendrá una vigencia comprendida entre el día 25 de Noviembre de 2025 y el día 30 de Diciembre de 2025, periodo durante el cual se recibirán las propuestas a través del sitio web oficial del concurso habilitado en www.teknova.com/concurso-logo. La publicación del resultado y la notificación al ganador se realizará el día 5 de Enero de 2026, mediante los canales oficiales de Teknova (página web y redes sociales).
+La convocatoria tiene alcance nacional, y se regirá bajo las disposiciones legales vigentes en la República de Colombia, con estricto cumplimiento de las normas sobre derechos de autor, propiedad intelectual y protección de datos personales.
+2. Requisitos de participación
+Podrán participar en este concurso todas las personas naturales mayores de 18 años que sean profesionales titulados en Diseño Gráfico y cuenten con tarjeta profesional o documento equivalente que acredite su formación en el área. Este requisito busca garantizar un nivel profesional en las propuestas, en coherencia con los estándares de calidad y comunicación visual de Teknova.
+Quedan excluidos de la convocatoria los empleados, socios, contratistas y familiares directos del personal vinculado a Teknova S.A.S., así como cualquier persona que mantenga una relación laboral o contractual con la empresa durante la vigencia del concurso.
+La participación en el concurso no tendrá costo alguno, y el envío de las propuestas deberá realizarse exclusivamente a través del formulario oficial disponible en la página web del concurso, donde cada participante deberá completar correctamente todos los campos requeridos, adjuntar su archivo y aceptar los presentes Términos y Condiciones.
+Al participar, cada persona declara bajo su responsabilidad que ha leído, comprendido y aceptado en su totalidad las reglas del concurso, así como las políticas de confidencialidad, tratamiento de datos personales y cesión de derechos descritas en este documento.
+
+3. Características de la propuesta
+Cada participante podrá enviar una (1) única propuesta, la cual deberá ser totalmente original, inédita y creada exclusivamente para este concurso. No se aceptarán diseños que hayan sido presentados con anterioridad en otros concursos, portafolios, plataformas de diseño o redes sociales.
+El archivo deberá presentarse en formato .PNG, con fondo transparente, resolución mínima de 3000 x 3000 píxeles y 300 dpi, y un peso máximo de 10 MB. Deberá incluir una breve justificación del concepto creativo (de entre 150 y 250 palabras) donde se explique la inspiración, el mensaje visual y el significado del diseño propuesto.
+El logo deberá reflejar los valores de Teknova, entre ellos la innovación, la tecnología, la creatividad, el desarrollo y la visión de futuro, manteniendo coherencia con el carácter moderno y digital de la empresa.
+El uso de paletas de color será libre, quedando a criterio del diseñador, siempre que se mantenga una adecuada legibilidad, equilibrio visual y aplicabilidad en diversos medios.
+No se aceptarán propuestas que incluyan elementos con derechos de autor de terceros, ni aquellas que incorporen material obtenido de bancos de imágenes, plantillas preexistentes o generadas mediante inteligencia artificial (IA). La propuesta deberá ser el resultado de la creación manual, conceptual y artística del propio participante, quien asume plena responsabilidad por su originalidad y autenticidad.
+4. Propiedad intelectual y derechos de autor
+Al momento de enviar su propuesta, el participante declara y garantiza que el diseño presentado es de su autoría exclusiva, libre de cualquier reclamo, carga o restricción de terceros, y que no infringe derechos de autor, marcas registradas, patentes ni otros derechos de propiedad intelectual existentes.
+El participante cede de manera total, irrevocable, indefinida y gratuita a favor de Teknova S.A.S. todos los derechos patrimoniales derivados de su creación, incluyendo pero sin limitarse a los derechos de reproducción, comunicación pública, distribución, transformación, adaptación, modificación y uso comercial o institucional en cualquier formato, soporte o medio de difusión, tanto físico como digital, dentro y fuera del territorio nacional.
+Esta cesión de derechos se entiende efectiva desde el momento en que la propuesta es enviada a través de la página web del concurso, independientemente de si el participante resulta o no ganador. Teknova S.A.S. adquiere así la plena titularidad sobre las obras recibidas y podrá utilizarlas total o parcialmente, editarlas, fusionarlas, reinterpretarlas o adaptarlas según las necesidades corporativas de la marca, sin requerir aprobación adicional ni generar derecho a remuneración diferente a la establecida para el ganador.
+El participante exonera expresamente a Teknova S.A.S. de toda responsabilidad derivada de reclamaciones de terceros y asume las consecuencias legales en caso de vulneración de derechos de autor, falsedad en la autoría o uso de elementos protegidos.
+5. Selección del ganador
+La evaluación de las propuestas estará a cargo de un Comité de Selección designado por Teknova S.A.S., conformado por miembros del área de Diseño, Comunicación Estratégica, Marketing y Dirección General. Dicho comité analizará y calificará las obras recibidas conforme a los siguientes criterios de evaluación:
+•	Originalidad, creatividad y concepto visual del diseño.
+•	Coherencia con los valores y la identidad corporativa de Teknova.
+•	Claridad visual, legibilidad y aplicabilidad en diversos formatos digitales e impresos.
+•	Innovación tecnológica y capacidad de representar el espíritu moderno de la empresa.
+•	Impacto estético, recordación de marca y viabilidad de uso en diferentes escalas.
+El comité seleccionará la propuesta que mejor cumpla con los criterios anteriores, declarando un único ganador. No obstante, Teknova S.A.S. se reserva el derecho de declarar el concurso desierto en caso de que ninguna propuesta cumpla con los estándares de calidad o expectativas institucionales.
+La decisión del jurado será final, inapelable y de carácter definitivo, sin que los participantes puedan presentar reclamaciones o apelaciones posteriores. El resultado será publicado oficialmente en la página web y redes sociales de Teknova, y se notificará al ganador por los medios de contacto registrados en su inscripción.
+6. Remuneración o incentivo
+El participante cuya propuesta sea seleccionada como ganadora del concurso “Diseña el Nuevo Logo de Teknova” recibirá como premio una remuneración única equivalente a diez millones de pesos colombianos ($10.000.000 COP), suma que será entregada dentro de los treinta (30) días calendario siguientes a la publicación oficial del resultado, mediante transferencia bancaria o el medio de pago acordado con el ganador.
+Además de la remuneración económica, el ganador obtendrá un acceso VIP a las aplicaciones desarrolladas por Teknova, lo que le permitirá disfrutar de funciones exclusivas, beneficios adicionales y acceso anticipado a futuras actualizaciones o herramientas tecnológicas creadas por la empresa. Este acceso será personal, intransferible y se otorgará por un período inicial de doce (12) meses, prorrogable a discreción de Teknova S.A.S.
+La entrega del premio económico estará sujeta al cumplimiento de todos los requisitos y condiciones establecidos en el presente documento, así como a la firma previa de un acta de entrega y un documento de cesión total de derechos patrimoniales de autor sobre la obra ganadora, conforme a lo dispuesto en la legislación colombiana.
+El premio no es transferible, reembolsable ni canjeable por otros bienes o servicios, salvo decisión expresa de Teknova. En caso de que el ganador no responda a la notificación o no entregue la documentación necesaria dentro de los siete (7) días hábiles posteriores al contacto inicial, la empresa se reserva el derecho de declarar el premio desierto o seleccionar otra propuesta como ganadora.
+Teknova S.A.S. no asumirá gastos, impuestos o retenciones que pudieran derivarse de la entrega del premio, siendo responsabilidad exclusiva del ganador cumplir con las obligaciones fiscales correspondientes. La participación y aceptación del premio implican la conformidad del ganador con las condiciones aquí establecidas, así como la autorización expresa para que Teknova utilice su nombre, imagen y obra con fines promocionales del concurso y de la marca.
+7. Uso de imagen y datos personales
+Al participar en el Concurso Teknova, los aspirantes autorizan a Teknova S.A.S. para el tratamiento de sus datos personales, conforme a lo establecido en la Ley 1581 de 2012, el Decreto 1377 de 2013 y la Política de Protección de Datos Personales de la empresa.
+La información recolectada será utilizada exclusivamente para procesos de evaluación, selección y eventual contratación laboral, así como para comunicaciones relacionadas con el concurso o futuras convocatorias.
+El participante y el eventual ganador(a) autorizan a Teknova S.A.S. a utilizar su nombre, imagen, voz, fotografía, video y propuesta presentada en medios impresos, digitales o audiovisuales con fines institucionales o promocionales, sin que ello genere obligación de pago adicional ni relación comercial distinta a la laboral establecida.
+Los participantes podrán ejercer sus derechos de acceso, rectificación, actualización o supresión de datos enviando una solicitud al correo electrónico: datospersonales@teknova.com.co.
+8. Descalificación o eliminación de participantes
+Teknova S.A.S. se reserva el derecho de descalificar o excluir del concurso a cualquier participante que incurra en conductas contrarias a los principios de transparencia, ética o veracidad, tales como:
+•	Presentar información falsa, incompleta o adulterada.
+•	Plagiar o copiar total o parcialmente la propuesta o pruebas técnicas.
+•	Incumplir los requisitos o plazos establecidos en la convocatoria.
+•	Realizar actos de irrespeto, discriminación o acoso hacia otros participantes o personal de la empresa.
+•	Divulgar información interna o confidencial del concurso sin autorización expresa.
+La comprobación de cualquiera de estas conductas implicará la anulación inmediata de la participación, la pérdida del derecho a la vinculación laboral y la posible iniciación de acciones legales por parte de Teknova S.A.S.
+9. Responsabilidades y limitaciones
+Teknova S.A.S. no será responsable por fallas técnicas, errores de funcionamiento, interrupciones del servicio, pérdida de información o archivos, ni por cualquier otro tipo de inconveniente, imprevisto o circunstancia externa que pueda impedir, alterar o afectar la participación, evaluación o comunicación de los resultados del concurso.
+Asimismo, Teknova S.A.S. se reserva el derecho de modificar, suspender o cancelar el concurso en cualquier momento, por causas justificadas, casos fortuitos o de fuerza mayor, sin que ello genere obligación de compensación, reembolso o indemnización alguna a los participantes.
+La empresa tampoco estará obligada a seleccionar un ganador si, a su exclusivo juicio, las propuestas recibidas no cumplen con los estándares de calidad, originalidad, creatividad o pertinencia exigidos por la convocatoria, o si no se ajustan a los lineamientos técnicos y éticos definidos en las presentes bases.
+10. Jurisdicción y ley aplicable
+El presente concurso, así como todas las relaciones jurídicas y contractuales que se deriven de él, se regirán e interpretarán conforme a las leyes de la República de Colombia.
+Para todos los efectos legales, las partes fijan como jurisdicción y domicilio exclusivo la ciudad de Bogotá D.C., renunciando expresamente a cualquier otro fuero o jurisdicción que pudiera corresponderles en razón de su domicilio presente o futuro.
+11. Aceptación de los términos
+La participación en este concurso implica la plena aceptación y conformidad con todos los términos, condiciones, políticas y disposiciones establecidas en este documento, así como con cualquier modificación, actualización o aclaración que Teknova S.A.S. comunique oportunamente a través de sus canales oficiales.
+Cualquier incumplimiento, falsedad o irregularidad detectada durante el proceso facultará a Teknova S.A.S. para descalificar al participante en cualquier etapa del concurso, sin que ello genere derecho a reclamación o compensación alguna.
+
+
+
+.</p>
+      </div>
+      <div class="terms-actions">
+        <a href="terminos.pdf" class="btn-primary" download>Descargar PDF</a>
+        <label><input type="checkbox" id="acepto"> Acepto los términos y condiciones</label>
+      </div>
+      <button type="submit" class="btn-primary">Enviar</button>
+      <p class="small-text">Al enviar este formulario, aceptas todos los Términos y Condiciones del concurso de Teknova.</p>
+    </form>
+  </div>
+
+  <div id="nosotros" class="tab">
+    <h2>Nosotros</h2>
+
+    <section class="section">
+      <div>
+        <h3>Misión</h3>
+        <p>En Teknova, nuestra misión es impulsar la innovación tecnológica a través de soluciones inteligentes y accesibles. Buscamos transformar ideas en herramientas que potencien el progreso humano y empresarial, fomentando la creatividad, la seguridad digital y la sostenibilidad. Nuestro equipo de expertos trabaja cada día con pasión para crear tecnología que inspire confianza, eficiencia y crecimiento en un mundo en constante evolución.</p>
+      </div>
+      <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Misión Teknova">
+    </section>
+
+    <section class="section">
+      <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Visión Teknova">
+      <div>
+        <h3>Visión</h3>
+        <p>Nuestra visión es ser líderes globales en desarrollo tecnológico, impulsando una nueva era digital donde la inteligencia artificial, la automatización y la conectividad mejoren la vida de las personas. Teknova aspira a construir un ecosistema tecnológico sostenible, inclusivo y ético, donde cada innovación represente un paso más hacia un futuro más brillante y humano.</p>
+      </div>
+    </section>
+
+    <h3>Aplicaciones creadas por Teknova</h3>
+    <div class="apps">
+      <div class="app-card">
+        <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" alt="NovaAI">
+        <h4>NovaAI</h4>
+        <p>Asistente de inteligencia artificial para automatizar tareas empresariales con aprendizaje adaptativo.</p>
+      </div>
+      <div class="app-card">
+        <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800" alt="TekSecure">
+        <h4>TekSecure</h4>
+        <p>Plataforma avanzada de ciberseguridad con monitoreo en tiempo real y análisis predictivo.</p>
+      </div>
+      <div class="app-card">
+        <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800" alt="CloudFlow">
+        <h4>CloudFlow</h4>
+        <p>Sistema de gestión en la nube que permite colaboración segura entre equipos distribuidos.</p>
+      </div>
+      <div class="app-card">
+        <img src="https://images.pexels.com/photos/3862616/pexels-photo-3862616.jpeg?auto=compress&cs=tinysrgb&w=800" alt="VisionX">
+        <h4>VisionX</h4>
+        <p>Software de análisis de datos visuales con reconocimiento inteligente para empresas y educación.</p>
+      </div>
+      <div class="app-card">
+        <img src="https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=800" alt="CodeLab">
+        <h4>CodeLab</h4>
+        <p>Entorno colaborativo de desarrollo en línea, optimizado para equipos remotos.</p>
+      </div>
+      <div class="app-card">
+        <img src="https://images.pexels.com/photos/3861959/pexels-photo-3861959.jpeg?auto=compress&cs=tinysrgb&w=800" alt="DataSphere">
+        <h4>DataSphere</h4>
+        <p>Plataforma integral para análisis de grandes volúmenes de datos y visualización interactiva.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>© Teknova 2025 — Todos los derechos reservados</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('.tab');
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.getAttribute('data-tab');
+      sections.forEach(s => s.classList.remove('active'));
+      document.getElementById(target).classList.add('active');
+    });
+  });
+  document.getElementById("participaBtn").addEventListener("click", () => {
+    document.querySelector('[data-tab="inscripcion"]').click();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.getElementById("formInscripcion").addEventListener("submit", function(e) {
+    const check = document.getElementById("acepto");
+    if (!check.checked) {
+      e.preventDefault();
+      alert("Por favor acepta los Términos y Condiciones antes de enviar el formulario.");
+    }
+  });
+</script>
+</body>
+</html>
